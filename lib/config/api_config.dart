@@ -1,17 +1,11 @@
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'environment_config.dart';
 
 class ApiConfig {
   static String get backendUrl {
-    if (kIsWeb) {
-      return 'http://localhost:8000/api';
-    } else if (Platform.isIOS || Platform.isAndroid) {
-      // 在 iOS 模拟器中使用特殊的 host
-      return 'http://127.0.0.1:8000/api';
-    } else {
-      return 'http://localhost:8000/api';
-    }
+    return '${EnvironmentConfig.apiBaseUrl}/api';
   }
   
   // 获取音频缓存目录
